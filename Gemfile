@@ -1,11 +1,20 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.0'
+gem 'mysql2'
+gem 'haml'
+gem 'capistrano'
+#gem 'ruby-debug19' #this is silly, and I'm using 1.8
+gem 'state_machine'
+gem 'devise'
+gem 'jammit'
+gem 'rack-offline'
+# gem 'compass'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+# gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Use unicorn as the web server
 # gem 'unicorn'

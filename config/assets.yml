@@ -1,0 +1,30 @@
+template_function: _.template
+
+javascripts:
+  sencha:
+    - public/javascripts/ext-touch-debug.js
+    - public/javascripts/senchaapp.js
+  jqtouch:
+    - public/javascripts/raphael-min.js
+    - public/javascripts/jquery.js
+    - public/javascripts/underscore.js
+    # - public/javascripts/rails.js
+    - public/javascripts/jqtouch.min.js
+    - public/javascripts/jqtouch.transitions.js
+    - public/javascripts/jqtouch-application.js
+  jo:
+    - public/javascripts/jo/jo.js
+    - public/javascripts/jo/joapp.js
+  raphael:
+    - public/javascripts/raphael.js
+  
+stylesheets:
+  sencha:
+    - public/stylesheets/ext-touch-debug.css
+  jqtouch:
+    - public/stylesheets/jqt_theme.css
+    - public/stylesheets/jqtouch.css
+  jo:
+    - public/stylesheets/jo/jo.css
+    - public/stylesheets/aluminum/webkit.css
+    

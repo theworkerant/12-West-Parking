@@ -1,0 +1,49 @@
+- content_for :header do
+  = include_stylesheets :jqtouch
+  = include_javascripts :jqtouch
+
+
+#home.current
+  .toolbar
+    %h1 12 West Parking
+    
+  #last_parked_area  
+    %ul.rounded
+      %li.arrow= link_to "Where am I parked?", "#parked"
+  
+  #parking_at_area
+    %ul.rounded.zones
+      %li.arrow.blue_zone{:zone_color => "blue", :level => 1 }= link_to "Level One", "#parking"
+      %li.arrow.green_zone{:zone_color => "green", :level => 2 }= link_to "Level Two", "#parking"
+      %li.arrow.orange_zone{:zone_color => "orange", :level => 3 }= link_to "Level Three", "#parking"
+      %li.arrow.yellow_zone{:zone_color => "yellow", :level => 4 }= link_to "Level Four", "#parking"
+      %li.arrow.purple_zone{:zone_color => "purple", :level => 5 }= link_to "Level Five", "#parking"
+
+#parking
+  .toolbar
+    %h1 Park your vehicle!
+    .arrow.back= link_to "Back", "#home"
+    
+  %ul.rounded.parked_zones
+    %li.rounded.blue_zone= link_to "You're Parking on Level One", "#parking"
+    %li.rounded.green_zone= link_to "You're Parking on Level Two", "#parking"
+    %li.rounded.orange_zone= link_to "You're Parking on Level Three", "#parking"
+    %li.rounded.yellow_zone= link_to "You're Parking on Level Four", "#parking"
+    %li.rounded.purple_zone= link_to "You're Parking on Level Five", "#parking"
+    %li.rounded.parking_link Remember this spot!
+  #lot_parking
+
+
+#parked
+  .toolbar
+    %h1 You are here
+    .arrow.back= link_to "Back", "#home"
+  %ul.rounded.parked_zones
+    %li.rounded.blue_zone= link_to "You're Parked on Level One", "#parking"
+    %li.rounded.green_zone= link_to "You're Parked on Level Two", "#parking"
+    %li.rounded.orange_zone= link_to "You're Parked on Level Three", "#parking"
+    %li.rounded.yellow_zone= link_to "You're Parked on Level Four", "#parking"
+    %li.rounded.purple_zone= link_to "You're Parked on Level Five", "#parking"
+    %li.rounded.leaving_link= link_to "Leaving now!", "#"
+  #lot_parked
+    
