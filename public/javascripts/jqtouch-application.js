@@ -40,6 +40,8 @@ var jQT = new $.jQTouch({
       ]
 });
 
+var saved_messages = ["Spot saved!", "Good to go.", "Got it", "Okay, saved that spot!"];
+var goodbyes = ["Drive safe", "Bye!", "Until next time." ];
 
 if (localStorage.parked == undefined) { localStorage.parked = 0 };
 
@@ -47,7 +49,7 @@ var vehicles = {
   car:        {src: "../images/car.png", src_up: "../images/car_up.png", width: 100, height: 87 },
   motorcycle: {src: "../images/motorcycle.png", src_up: "../images/motorcycle_up.png", width: 100, height: 87 },
 };
-localStorage.vehicle = "motorcycle";
+localStorage.vehicle = "car";
 
 var lot_parking
 var lot_parked
@@ -79,7 +81,7 @@ function parking_map(id, W, H, marker_icon) {
   this.marker = this.canvas.image(marker_icon.src, 0, 0, marker_icon.width, marker_icon.height);
   this.touchable = this.canvas.rect(0, 0, W, H);  
   this.marker.scale(0.8,0.8)
-  this.touchable.attr({fill: "#fff", opacity: 0.1});
+  this.touchable.attr({fill: "#fff", opacity: 0});
   $(this.touchable.node).css("cursor", "pointer")
   
   // Set position
@@ -87,6 +89,7 @@ function parking_map(id, W, H, marker_icon) {
     this.marker.attr({x: localStorage.parked_at_x, y: localStorage.parked_at_y})
   } else {
     this.marker.attr({x: (W/2 - (marker_icon.width/2)), y: (H/2 - (marker_icon.height/2))})
+    
   }
   marker = this.marker
 
@@ -97,17 +100,17 @@ function parking_map(id, W, H, marker_icon) {
     marker.oy = marker.attr("y");
   },
   this.move = function (dx, dy) {
-    if (!(marker.ox+dx+marker.attr("width") > W) && !(marker.ox+dx < 0)) { marker.attr({x: marker.ox + dx}); };
-    if (!(marker.oy+dy+marker.attr("height") > H) && !(marker.oy+dy < 0)) { marker.attr({y: marker.oy + dy}); };
+    if (!(marker.ox+dx+marker.attr("width") > W) && !(marker.ox+dx < 0)) { marker.attr({x: marker.ox + dx}); localStorage.parked_at_x = marker.attr("x"); };
+    if (!(marker.oy+dy+marker.attr("height") > H) && !(marker.oy+dy < 0)) { marker.attr({y: marker.oy + dy}); localStorage.parked_at_y = marker.attr("y"); };
   },
   this.up = function () {
     // set it down
     marker.attr({src: marker_icon.src}); 
-    localStorage.parked_at_x = marker.attr("x");
-    localStorage.parked_at_y = marker.attr("y");
   };
   
   if (!parseInt(localStorage.parked)) {  
+    localStorage.parked_at_x = this.marker.attr("x");
+    localStorage.parked_at_y = this.marker.attr("y");
     this.touchable.drag(this.move, this.start, this.up);
   };
   
@@ -149,19 +152,19 @@ $(document).ready(function() {
   
   $(".leaving_link").click(function() {
     unparked();
-    alert("Bye!");
+    alert( goodbyes[Math.floor(Math.random()*(goodbyes.length)) ] )
     jQT.goBack('#home');
   });
   
   $(".parking_link").click(function() {
     parked();
-    alert("Okay, saved that spot!");
+    alert( saved_messages[Math.floor(Math.random()*(saved_messages.length)) ] )
     jQT.goBack('#home');
   });
   
   $("#parking_at_area .zones > li").click(function() {
     marker.attr({opacity: 0})
-    setTimeout(function() {marker.animate({opacity: 1}, 400), bounce();}, 300);
+    setTimeout(function() {marker.animate({opacity: 1}, 400), bounce();}, 500);
     
     localStorage.zone_color = $(this).attr("zone_color");
     localStorage.level = $(this).attr("level");

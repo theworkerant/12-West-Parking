@@ -5,7 +5,7 @@
 
 #home.current
   .toolbar
-    %h1 12 West Parking
+    %h1 12 West
     
   #last_parked_area  
     %ul.rounded
@@ -22,7 +22,8 @@
 #parking
   .toolbar
     %h1 Park your vehicle!
-    .arrow.back= link_to "Back", "#home"
+    %ul
+      = link_to "Back", "#home", :class => "back"
     
   %ul.rounded.parked_zones
     %li.rounded.blue_zone= link_to "You're Parking on Level One", "#parking"
@@ -37,13 +38,13 @@
 #parked
   .toolbar
     %h1 You are here
-    .arrow.back= link_to "Back", "#home"
+    = link_to "Back", "#home", :class => "back"
   %ul.rounded.parked_zones
     %li.rounded.blue_zone= link_to "You're Parked on Level One", "#parking"
     %li.rounded.green_zone= link_to "You're Parked on Level Two", "#parking"
     %li.rounded.orange_zone= link_to "You're Parked on Level Three", "#parking"
     %li.rounded.yellow_zone= link_to "You're Parked on Level Four", "#parking"
     %li.rounded.purple_zone= link_to "You're Parked on Level Five", "#parking"
-    %li.rounded.leaving_link= link_to "Leaving now!", "#"
+    %li.rounded.leaving_link I'm leaving now, forget this spot
   #lot_parked
     
